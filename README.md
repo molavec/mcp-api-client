@@ -23,13 +23,24 @@ Create an `api.yaml` file in your project:
 
 ```yaml
 apis:
-  getUser:
+  - name: getUser
     url: https://api.example.com/users/{id}
     method: GET
     api-token: ${API_TOKEN}
     content:
       headers:
         Accept: application/json
+  
+  - name: createUser
+    url: https://api.example.com/users
+    method: POST
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        name: string
+        email: string
 ```
 
 Create a `.env` file for your API tokens:
@@ -52,6 +63,7 @@ The server will create MCP tools for each API endpoint defined in your `api.yaml
 
 Each API endpoint in the YAML file should have:
 
+- `name`: The unique name for this API endpoint
 - `url`: The endpoint URL (supports path parameters like `{id}`)
 - `method`: HTTP method (GET, POST, PATCH, PUT, DELETE)
 - `api-token`: API token (supports environment variables)
