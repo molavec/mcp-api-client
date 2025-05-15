@@ -1,0 +1,49 @@
+apis:
+  - name: getUser
+    url: https://api.example.com/users/{id}
+    method: GET
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Accept: application/json
+
+  - name: createUser
+    url: https://api.example.com/users
+    method: POST
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        name: string
+        email: string
+
+  - name: updateUser
+    url: https://api.example.com/users/{id}
+    method: PATCH
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        name: string
+        email: string
+
+  - name: replaceUser
+    url: https://api.example.com/users/{id}
+    method: PUT
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        name: string
+        email: string
+
+  - name: deleteUser
+    url: https://api.example.com/users/{id}
+    method: DELETE
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Accept: application/json
