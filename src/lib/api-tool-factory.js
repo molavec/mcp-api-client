@@ -1,5 +1,29 @@
 import { Tool } from '@modelcontextprotocol/sdk';
 import fetch from 'node-fetch';
+import zod from 'zod';
+
+
+function createBodySchema(bodyDef) {
+    if (!bodyDef) return z.object({}).optional();
+
+    const schema = {};
+    for (const [key, type] of Object.entries(bodyDef)) {
+        switch (type.toLowerCase()) {
+            case 'string':
+                schema[key] = z.string();
+                break;
+            case 'number':
+                schema[key] = z.number();
+                break;
+            case 'boolean':
+                schema[key] = z.boolean();
+                break;
+            default:
+                schema[key] = z.any();
+        }
+    }
+    return z.object(schema);
+}
 
 export class ApiToolFactory {
   static createTool(name, config) {
@@ -12,7 +36,7 @@ export class ApiToolFactory {
         type: 'object',
         properties: {
           ...this.generateParameters(url),
-          ...(content.body ? { body: { type: 'object', properties: content.body } } : {})
+          ...(content.body ? { body: createBodySchema(content.body)} : {})
         },
         required: this.extractRequiredParams(url)
       },
