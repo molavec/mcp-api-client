@@ -1,0 +1,326 @@
+[
+  {
+    "name": "getUsers",
+    "description": "Retrieve a list of users.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "annotations": {
+      "title": "Retrieve a list of users.",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "getUsersWithParams",
+    "description": "Retrieve a list of users with pagination.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "annotations": {
+      "title": "Retrieve a list of users with pagination.",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "getUser",
+    "description": "Retrieve a user by ID.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "annotations": {
+      "title": "Retrieve a user by ID.",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "getUserWithParams",
+    "description": "Retrieve a user by ID with optional query parameters.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "annotations": {
+      "title": "Retrieve a user by ID with optional query parameters.",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "createUser",
+    "description": "Create a new user.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "_def": {
+            "description": "The unique identifier for the user.",
+            "innerType": {
+              "_def": {
+                "checks": [],
+                "typeName": "ZodNumber",
+                "coerce": false,
+                "description": "The unique identifier for the user."
+              },
+              "~standard": {
+                "version": 1,
+                "vendor": "zod"
+              }
+            },
+            "typeName": "ZodDefault"
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        },
+        "name": {
+          "_def": {
+            "description": "The name of the user.",
+            "innerType": {
+              "_def": {
+                "checks": [],
+                "typeName": "ZodString",
+                "coerce": false,
+                "description": "The name of the user."
+              },
+              "~standard": {
+                "version": 1,
+                "vendor": "zod"
+              }
+            },
+            "typeName": "ZodDefault"
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        },
+        "email": {
+          "_def": {
+            "checks": [],
+            "typeName": "ZodString",
+            "coerce": false,
+            "description": "The email address of the user."
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email"
+      ]
+    },
+    "annotations": {
+      "title": "Create a new user.",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "updateUser",
+    "description": "Update an existing user.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "_def": {
+            "description": "The unique identifier for the user.",
+            "innerType": {
+              "_def": {
+                "checks": [],
+                "typeName": "ZodNumber",
+                "coerce": false,
+                "description": "The unique identifier for the user."
+              },
+              "~standard": {
+                "version": 1,
+                "vendor": "zod"
+              }
+            },
+            "typeName": "ZodDefault"
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        },
+        "name": {
+          "_def": {
+            "innerType": {
+              "_def": {
+                "innerType": {
+                  "_def": {
+                    "checks": [],
+                    "typeName": "ZodString",
+                    "coerce": false
+                  },
+                  "~standard": {
+                    "version": 1,
+                    "vendor": "zod"
+                  }
+                },
+                "typeName": "ZodOptional"
+              },
+              "~standard": {
+                "version": 1,
+                "vendor": "zod"
+              }
+            },
+            "typeName": "ZodDefault"
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        },
+        "email": {
+          "_def": {
+            "innerType": {
+              "_def": {
+                "checks": [],
+                "typeName": "ZodString",
+                "coerce": false
+              },
+              "~standard": {
+                "version": 1,
+                "vendor": "zod"
+              }
+            },
+            "typeName": "ZodOptional"
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "annotations": {
+      "title": "Update an existing user.",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "replaceUser",
+    "description": "Replace an existing user.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "_def": {
+            "description": "The unique identifier for the user.",
+            "innerType": {
+              "_def": {
+                "checks": [],
+                "typeName": "ZodNumber",
+                "coerce": false,
+                "description": "The unique identifier for the user."
+              },
+              "~standard": {
+                "version": 1,
+                "vendor": "zod"
+              }
+            },
+            "typeName": "ZodDefault"
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        },
+        "name": {
+          "_def": {
+            "description": "The name of the user.",
+            "innerType": {
+              "_def": {
+                "checks": [],
+                "typeName": "ZodString",
+                "coerce": false,
+                "description": "The name of the user."
+              },
+              "~standard": {
+                "version": 1,
+                "vendor": "zod"
+              }
+            },
+            "typeName": "ZodDefault"
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        },
+        "email": {
+          "_def": {
+            "checks": [],
+            "typeName": "ZodString",
+            "coerce": false,
+            "description": "The email address of the user."
+          },
+          "~standard": {
+            "version": 1,
+            "vendor": "zod"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email"
+      ]
+    },
+    "annotations": {
+      "title": "Replace an existing user.",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "deleteUser",
+    "description": "Delete a user by ID.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "annotations": {
+      "title": "Delete a user by ID.",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": true
+    }
+  }
+]

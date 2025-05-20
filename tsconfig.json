@@ -13,7 +13,8 @@
     "types": ["node"],
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
-    "incremental": true
+    "incremental": true,
+    "moduleResolution": "node",
     },
   "exclude": [
     "node_modules",
