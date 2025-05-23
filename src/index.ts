@@ -10,6 +10,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 // import fs from 'fs';
 import { readYamlAsJson } from './lib/yaml-reader';
 import { buildToolsFromApiConfigArray } from './lib/tools-builder';
+import { callApi } from './lib/api-factory';
  
 import type { ApiConfig } from './types/api';
 
@@ -34,33 +35,29 @@ server.setRequestHandler(ListToolsRequestSchema, async () => { return { tools: t
 
 // Registra el manejador para la llamada a la herramienta
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  
+  // Obtiene la herramienta
   const tool = tools.find(t => t.name === request.params.name);
   console.error("Tool:", tool.name);
   if (!tool) {
     throw new Error(`Tool ${request.params.name} not found`);
   }
 
-  // obtiene la configuración del api desde el config.apis que tiene el mismo tool.name
+  // obtiene la configuración del api con el mismo tool.name
   const apiConfig = config.apis.find((api: ApiConfig) => api.name === tool.name);
   if (!apiConfig) {
     throw new Error(`API configuration for tool ${tool.name} not found`);
   }
 
-  // llama a un Factory para ejecutar la llamada a la API
-  const factory = new ApiFactory(apiConfig);
-  const response = await factory.callApi(request.params.input);
+  const response = await callApi(apiConfig, request.params.arguments);
   console.error("Response:", response);
-  // Aquí puedes procesar la respuesta de la API y devolverla al cliente
 
-  // const textReturned = JSON.stringify(request,null,2);
-  
-  const textReturned = 'A message from the tool';
-
+  // Devuelve la respuesta real de la API
   return {
     content: [
       {
         type: 'text',
-        text: textReturned,
+        text: typeof response === 'string' ? response : JSON.stringify(response, null, 2),
       },
     ],
   };

@@ -1,10 +1,11 @@
 
 export interface ApiProperty {
   name: string;
-  default?: string;
+  default?: string | number | boolean | null;
   type: string;
   required: boolean;
   description?: string;
+  value?: string | number | boolean | null;
 }
 
 export interface ApiConfig {
