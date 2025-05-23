@@ -25,7 +25,9 @@
   "scripts": {
     "dev": "tsx --watch src/index.ts",
     "start": "node dist/index.js",
+    "api:server": "node test/example-api.js",
     "build": "tsc --project tsconfig.build.json",
+    "inspector": "npx -y @modelcontextprotocol/inspector tsx src/index.ts",
     "test": "vitest"
   },
   "license": "MIT",
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.19",
+    "express": "^5.1.0",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vitest": "^1.0.0"

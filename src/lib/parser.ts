@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { ApiBodyProperty } from "../types/apiBodyProperty";
+import type { ApiProperty } from "../types/api";
 
 // Función auxiliar para reemplazar variables de entorno
 function replaceEnvVars(str: string): string {
@@ -12,7 +12,7 @@ function replaceUrlParams(url: string, params: Record<string, string>): string {
 }
 
 // Función para crear un esquema Zod basado en la definición del body
-function createBodySchema(bodyDef: ApiBodyProperty[] | undefined) {
+function createBodySchema(bodyDef: ApiProperty[] | undefined) {
     if (!bodyDef || !Array.isArray(bodyDef)) return z.object({}).optional();
     const schema: Record<string, any> = {};
     for (const prop of bodyDef) {

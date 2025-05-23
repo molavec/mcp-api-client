@@ -21,6 +21,9 @@ importers:
       '@types/node':
         specifier: ^22.15.19
         version: 22.15.19
+      express:
+        specifier: ^5.1.0
+        version: 5.1.0
       tsx:
         specifier: ^4.19.4
         version: 4.19.4

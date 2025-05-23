@@ -1,5 +1,5 @@
 import { createBodySchema } from "./parser";
-import type { ApiBodyProperty } from "../types/apiBodyProperty";
+import type { ApiProperty } from "../types/api";
 import { z } from "zod";
 
 const getPropertiesFromSchema = (schema: z.ZodTypeAny) => {
@@ -15,7 +15,7 @@ const getPropertiesFromSchema = (schema: z.ZodTypeAny) => {
 export const buildToolsFromApiConfigArray = (apiConfigArray: any[]): any[] =>
   apiConfigArray.map((apiConfig: any) => {
     const method = apiConfig.method?.toUpperCase();
-    const bodyDef: ApiBodyProperty[] | undefined = apiConfig.content?.body;
+    const bodyDef: ApiProperty[] | undefined = apiConfig.content?.body;
     const schema = createBodySchema(bodyDef);
     return {
       name: apiConfig.name,
@@ -23,7 +23,7 @@ export const buildToolsFromApiConfigArray = (apiConfigArray: any[]): any[] =>
       inputSchema: {
         type: "object",
         properties: getPropertiesFromSchema(schema),
-        required: (bodyDef || []).filter((p: ApiBodyProperty) => p.required).map((p: ApiBodyProperty) => p.name),
+        required: (bodyDef || []).filter((p: ApiProperty) => p.required).map((p: ApiProperty) => p.name),
       },
       annotations: {
         title: apiConfig.description,

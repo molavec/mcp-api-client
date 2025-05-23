@@ -1,8 +1,12 @@
+metadata:
+  name: API Examples
+  version: 1.0.0
+  description: This file contains examples of various API endpoints for testing purposes.
 apis:
   # add example GET API without parameters
   - name: getUsers
     description: Retrieve a list of users.
-    url: https://api.example.com/users
+    url: https://localhost:3000/users
     method: GET
     api-token: ${API_TOKEN}
     content:
@@ -12,7 +16,7 @@ apis:
   # add example GET API with parameters
   - name: getUsersWithParams
     description: Retrieve a list of users with pagination.
-    url: https://api.example.com/users
+    url: https://localhost:3000/users
     method: GET
     api-token: ${API_TOKEN}
     content:
@@ -33,7 +37,7 @@ apis:
   # add example GET API with path parameters
   - name: getUser
     description: Retrieve a user by ID.
-    url: https://api.example.com/users/{id}
+    url: https://localhost:3000/users/{id}
     method: GET
     api-token: ${API_TOKEN}
     content:
@@ -43,7 +47,7 @@ apis:
   # add example GET API with path parameters and query parameters
   - name: getUserWithParams
     description: Retrieve a user by ID with optional query parameters.
-    url: https://api.example.com/users/{id}
+    url: https://localhost:3000/users/{id}
     method: GET
     api-token: ${API_TOKEN}
     content:
@@ -59,7 +63,7 @@ apis:
   # add example POST API        
   - name: createUser
     description: Create a new user.
-    url: https://api.example.com/users
+    url: https://localhost:3000/users
     method: POST
     api-token: ${API_TOKEN}
     content:
@@ -67,12 +71,10 @@ apis:
         Content-Type: application/json
       body:
         - name: id
-          default: 1
           type: integer
-          required: true
+          required: false
           description: The unique identifier for the user.
         - name: name
-          default: John Doe
           type: string
           required: true
           description: The name of the user.
@@ -84,7 +86,7 @@ apis:
   # add example POST API with path parameters
   - name: updateUser
     description: Update an existing user.
-    url: https://api.example.com/users/{id}
+    url: https://localhost:3000/users/{id}
     method: PATCH
     api-token: ${API_TOKEN}
     content:
@@ -109,7 +111,7 @@ apis:
   # add example PUT API with
   - name: replaceUser
     description: Replace an existing user.
-    url: https://api.example.com/users/{id}
+    url: https://localhost:3000/users/{id}
     method: PUT
     api-token: ${API_TOKEN}
     content:
@@ -134,7 +136,7 @@ apis:
   # add example DELETE API with path parameters
   - name: deleteUser
     description: Delete a user by ID.
-    url: https://api.example.com/users/{id}
+    url: https://localhost:3000/users/{id}
     method: DELETE
     api-token: ${API_TOKEN}
     content:
