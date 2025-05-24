@@ -1,0 +1,143 @@
+metadata:
+  name: API Examples
+  version: 1.0.0
+  description: This file contains examples of various API endpoints for testing purposes.
+apis:
+  # add example GET API without parameters
+  - name: getUsers
+    description: Retrieve a list of users.
+    url: http://localhost:3000/users
+    method: GET
+    content:
+      headers:
+        Accept: application/json
+  
+  # add example GET API with parameters
+  - name: getUsersWithParams
+    description: Retrieve a list of users with pagination.
+    url: http://localhost:3000/users
+    method: GET
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Accept: application/json
+      query:
+        - name: page
+          default: 1
+          type: integer
+          required: false
+          description: The page number to retrieve.
+        - name: limit
+          default: 10
+          type: integer
+          required: false
+          description: The number of users to retrieve per page.
+
+  # add example GET API with path parameters
+  - name: getUser
+    description: Retrieve a user by ID.
+    url: http://localhost:3000/users/{id}
+    method: GET
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Accept: application/json
+
+  # add example GET API with path parameters and query parameters
+  - name: getUserWithParams
+    description: Retrieve a user by ID with optional query parameters.
+    url: http://localhost:3000/users/{id}
+    method: GET
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Accept: application/json
+      query:
+        - name: includePosts
+          default: true
+          type: boolean
+          required: false
+          description: Whether to include the user's posts in the response.
+
+  # add example POST API        
+  - name: createUser
+    description: Create a new user.
+    url: http://localhost:3000/users
+    method: POST
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        - name: id
+          type: integer
+          required: false
+          description: The unique identifier for the user.
+        - name: name
+          type: string
+          required: true
+          description: The name of the user.
+        - name: email
+          type: string
+          required: true
+          description: The email address of the user.
+
+  # add example POST API with path parameters
+  - name: updateUser
+    description: Update an existing user.
+    url: http://localhost:3000/users/{id}
+    method: PATCH
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        - name: id
+          default: 1
+          type: integer
+          required: true
+          description: The unique identifier for the user.
+        - name: name
+          default: John Doe
+          type: string
+          required: false
+          description: The name of the user.
+        - name: email
+          type: string
+          required: false
+          description: The email address of the user.
+
+  # add example PUT API with
+  - name: replaceUser
+    description: Replace an existing user.
+    url: http://localhost:3000/users/{id}
+    method: PUT
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        - name: id
+          default: 1
+          type: integer
+          required: true
+          description: The unique identifier for the user.
+        - name: name
+          default: John Doe
+          type: string
+          required: true
+          description: The name of the user.
+        - name: email
+          type: string
+          required: true
+          description: The email address of the user.
+
+  # add example DELETE API with path parameters
+  - name: deleteUser
+    description: Delete a user by ID.
+    url: http://localhost:3000/users/{id}
+    method: DELETE
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Accept: application/json

@@ -21,7 +21,7 @@ describe('MCP YAML API', () => {
     mockServer = await startMockServer();
 
     // Use test configuration
-    const configPath = path.join(__dirname, 'test-api.yaml');
+    const configPath = path.join(__dirname, 'apis.yaml');
     const configFile = fs.readFileSync(configPath, 'utf8');
     config = YAML.parse(configFile);
 
