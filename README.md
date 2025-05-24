@@ -1,12 +1,14 @@
-# MCP API (BETA)
+# MCP API Client (BETA)
 
-A Model Context Protocol (MCP) server that call APIs configured in YAML files. 
+A **Model Context Protocol (MCP) server** that **call APIs** using **YAML config** files. 
 
-This server allows you call APIs using a config YAML file! 🤩
+This server allows you call APIs using simple a config YAML file! 🤩
+
+Ideal for: `#lazy-programmers` `#nocode` `#lowcode` `#ai-integrators` `#automation` `#api-gateway` `#data-pipelines` `#rapid-prototyping` `#llm-integration` `#makers`
 
 If you don't have **advance APIs call skills** using a programming language or you just want  **a fast way to connect your AI model with an API** using MCP, you will LOVE 💖 this MCP.
 
-## Features
+### Features
 
 - Configure multiple API endpoints using YAML
 - Supports all HTTP methods (GET, POST, PATCH, PUT, DELETE)
@@ -15,7 +17,7 @@ If you don't have **advance APIs call skills** using a programming language or y
 - Factory pattern for tool creation
 - Full MCP server implementation
 
-## Use cases
+### Use cases
 
 - **Connect to N8N, Make.com or Zapier webhook**: Make actions in other platforms connecting to automations or integration tools.   
 - **AI Model Integration**: Quickly connect LLMs or other AI models to external APIs for data retrieval, enrichment, or action execution without custom code.
@@ -25,24 +27,27 @@ If you don't have **advance APIs call skills** using a programming language or y
 - **API Gateway**: Expose multiple backend APIs through a unified MCP interface, simplifying integration for downstream consumers.
 - **Secure API Access**: Manage secrets and tokens via environment variables, keeping sensitive data out of source code and YAML files.
 
-## Installation
+
+## How to use
 
 ```bash
 npx -y mcp-api path-to-api-config-file.yaml
 ```
 
-## Get a api.yaml Example File
 
-Create a `api.yaml` example File.
+
+## Getting started
+
+Get a copy of default `api.yaml`.
 
 ```bash
 npx -y mcp-api --init
 ```
 
+Test default api.yaml with express `test/example-api.js
 
-## Configuration api.yaml
 
-Create an `api.yaml` file in your project:
+`
 
 ```yaml
 apis:
@@ -72,13 +77,6 @@ Create a `.env` file for your API tokens:
 API_TOKEN=your_api_token_here
 ```
 
-## Usage
-
-Run the MCP server:
-
-```bash
-mcp-yaml-api
-```
 
 The server will create MCP tools for each API endpoint defined in your `api.yaml` file.
 
