@@ -2,6 +2,9 @@ import type { ApiConfig } from '../types/api';
 
 export async function callApi(apiConfig: ApiConfig, args: Record<string, any> | undefined ): Promise<any> {
   const { url, method, content } = apiConfig;
+
+  console.error("API Config:", apiConfig);
+
   let endpoint = url;
   let headers: Record<string, string> = {};
   let query: Record<string, any> = {};
@@ -63,14 +66,16 @@ export async function callApi(apiConfig: ApiConfig, args: Record<string, any> | 
     fetchOptions.body = JSON.stringify(body);
   }
 
-  // console.error("Fetch Options:", fetchOptions);
-  console.error("URL:", urlWithQuery);
-  console.error("Method:", method);
-  console.error("Body:", body);
-  console.error("Headers:", headers);
+  // console.error("Method:", method);
+  // console.error("Body:", body);
+  // console.error("Headers:", headers);
   // console.error("Query:", query);
   // console.error("Endpoint:", endpoint);
   // console.error("Query String:", queryString);
+  console.error("URL:", urlWithQuery);
+  console.error("Fetch Options:", fetchOptions);
+
+  // fetchOptions.body = undefined;
 
   try {
     const response = await fetch(urlWithQuery, fetchOptions);

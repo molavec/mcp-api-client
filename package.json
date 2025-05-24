@@ -1,6 +1,6 @@
 {
   "name": "mcp-yaml-api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Model Context Protocol (MCP) server that creates tools from API configurations defined in YAML files",
   "type": "module",
   "repository": {
