@@ -1,6 +1,6 @@
 {
   "name": "mcp-api-client",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "A Model Context Protocol (MCP) server that call APIs using YAML config files. ",
   "type": "module",
   "engines": {
@@ -35,7 +35,7 @@
     "inspector": "npx -y @modelcontextprotocol/inspector tsx src/index.ts",
     "test:server": "tsx src/test/server.ts",
     "test": "vitest",
-    "publish": "npm publish --access public"
+    "npm:publish": "pnpm publish --access public"
   },
   "license": "MIT",
   "dependencies": {
