@@ -1,18 +1,21 @@
 {
-  "name": "mcp-yaml-api",
-  "version": "0.4.0",
+  "name": "mcp-api-client",
+  "version": "0.6.5",
   "description": "A Model Context Protocol (MCP) server that creates tools from API configurations defined in YAML files",
   "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/molavec/mcp-yaml-api.git"
-  },
-  "bugs": {
-    "url": "https://github.com/molavec/mcp-yaml-api/issues"
-  },
-  "homepage": "https://github.com/molavec/mcp-yaml-api#readme",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "bin": {
+    "mcp-api-client": "dist/index.js"
+  },
+  "homepage": "https://www.npmjs.com/package/mcp-api-client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/molavec/mcp-api-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/molavec/mcp-api-client/issues"
   },
   "keywords": [
     "mcp",
@@ -25,10 +28,12 @@
   "scripts": {
     "dev": "tsx --watch src/index.ts",
     "start": "node dist/index.js",
-    "test:server": "node test/server.js",
+    "tsc": "tsc --version",
     "build": "tsc --project tsconfig.build.json",
     "inspector": "npx -y @modelcontextprotocol/inspector tsx src/index.ts",
-    "test": "vitest"
+    "test:server": "tsx src/test/server.ts",
+    "test": "vitest",
+    "publish": "npm publish --access public"
   },
   "license": "MIT",
   "dependencies": {
@@ -37,6 +42,7 @@
     "zod": "^3.24.4"
   },
   "devDependencies": {
+    "@types/express": "^5.0.2",
     "@types/node": "^22.15.19",
     "express": "^5.1.0",
     "tsx": "^4.19.4",

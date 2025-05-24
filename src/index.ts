@@ -1,79 +1,50 @@
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+#!/usr/bin/env node
 
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js'
-
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-
-// import fs from 'fs';
+import fs from 'fs';
 import { readYamlAsJson } from './lib/yaml-reader';
-import { buildToolsFromApiConfigArray } from './lib/tools-builder';
-import { callApi } from './lib/api-factory';
- 
-import type { ApiConfig } from './types/api';
+import { McpServer } from "./lib/mcp";
+import { createConfigFile } from './lib/create-config-file';
+import { startMockServer } from './test/mock-api';
 
-// Lee el archivo YAML de configuración de las APIs y construye la lista de herramientas
-const apiConfigFile = process.argv[2] || 'test/apis.yaml';
-const config = readYamlAsJson(apiConfigFile);
-const tools = buildToolsFromApiConfigArray(config.apis);
 
-// Crea el servidor MCP
-const server = new Server({
-  name: config.metadata.name || 'mcp-yaml-api',
-  description: config.metadata.description || 'MCP Yaml API',
-  version: config.metadata.version ||'1.0.0'
-}, {
-  capabilities: {
-    tools: {}
-  }
-});
-
-// Registra las herramientas en el servidor
-server.setRequestHandler(ListToolsRequestSchema, async () => { return { tools: tools } });
-
-// Registra el manejador para la llamada a la herramienta
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  
-  // Obtiene la herramienta
-  const tool = tools.find(t => t.name === request.params.name);
-  console.error("Tool:", tool.name);
-  if (!tool) {
-    throw new Error(`Tool ${request.params.name} not found`);
+const main = async () => {
+  // If terminal has --init option create a new config file based on the template test/apis.yaml and name it as api.yaml or the path given as argument
+  if (process.argv.includes('--init')) {
+    console.log("Creating config file...");
+    const initIndex = process.argv.indexOf('--init');
+    const configFile = process.argv[initIndex + 1] || 'apis.yaml';
+    try {
+      createConfigFile(configFile);
+      console.log(`Config file created: ${configFile}`);
+    } catch (error) {
+      console.error('Error creating config file:', error);
+    }
+    return;
   }
 
-  // obtiene la configuración del api con el mismo tool.name
-  const apiConfig = config.apis.find((api: ApiConfig) => api.name === tool.name);
-  if (!apiConfig) {
-    throw new Error(`API configuration for tool ${tool.name} not found`);
+  //is terminal has --test-server execute startMockServer()
+  if (process.argv.includes('--test-server')) {
+    console.log("Starting mock server...");
+    await startMockServer();
+    return;
   }
 
-  const response = await callApi(apiConfig, request.params.arguments);
-  console.error("Response:", response);
+  // Reads the YAML file with the API configuration and builds the tools list
+  const apiConfigFile = process.argv[2] || './src/test/apis.yaml';
+  const config = readYamlAsJson(apiConfigFile);
 
-  // Devuelve la respuesta real de la API
-  return {
-    content: [
-      {
-        type: 'text',
-        text: typeof response === 'string' ? response : JSON.stringify(response, null, 2),
-      },
-    ],
-  };
-});
+  const mcpServer = new McpServer(config.metadata, config.apis);
+
+  mcpServer.runServer().catch((error) => {
+    console.error("Fatal error in main():", error);
+    process.exit(1);
+  });
+
+};
 
 
-async function runServer() {
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-  console.error("MCP-YAML-API Server running on stdio.");
-}
-
-runServer().catch((error) => {
+main().catch((error) => { 
   console.error("Fatal error in main():", error);
   process.exit(1);
-});
-
-// guarda el resultado en un archivo JSON
-// fs.writeFileSync("tools.json", JSON.stringify(tools, null, 2), "utf8");
+}
+);

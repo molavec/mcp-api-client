@@ -1,17 +1,17 @@
 import { z } from "zod";
 import type { ApiProperty } from "../types/api";
 
-// Función auxiliar para reemplazar variables de entorno
+// Helper function to replace environment variables
 function replaceEnvVars(str: string): string {
     return str.replace(/\${([^}]+)}/g, (_, varName) => process.env[varName] || "");
 }
 
-// Función auxiliar para reemplazar parámetros en la URL
+// Helper function to replace parameters in the URL
 function replaceUrlParams(url: string, params: Record<string, string>): string {
     return url.replace(/{([^}]+)}/g, (_, param) => params[param] || "");
 }
 
-// Función para crear un esquema Zod basado en la definición del body
+// Function to create a Zod schema based on the body definition
 function createBodySchema(bodyDef: ApiProperty[] | undefined) {
     if (!bodyDef || !Array.isArray(bodyDef)) return z.object({}).optional();
     const schema: Record<string, any> = {};
@@ -32,14 +32,14 @@ function createBodySchema(bodyDef: ApiProperty[] | undefined) {
                 zodType = z.any();
         }
         
-        // Si required es true, el campo es obligatorio y se añade el mensaje de descripción
+        // If required is true, the field is mandatory and the description message is added
         if (prop.required) {
             schema[prop.name] = zodType.describe(prop.description || '');
         } else {
             schema[prop.name] = zodType.optional();
         }
 
-        // si default existe se añade el valor por defecto
+        // if default exists, the default value is added
         if (prop.default) {
             schema[prop.name] = schema[prop.name].default(prop.default);
         }

@@ -1,19 +1,22 @@
-# MCP API Client (BETA)
+# MCP API Client (Beta)
 
 A **Model Context Protocol (MCP) server** that **call APIs** using **YAML config** files. 
 
-This server allows you call APIs using simple a config YAML file! 🤩
+This server allows you connect to APIs using simple a config YAML file! 🤩
 
-Ideal for: `#lazy-programmers` `#nocode` `#lowcode` `#ai-integrators` `#automation` `#api-gateway` `#data-pipelines` `#rapid-prototyping` `#llm-integration` `#makers`
+Ideal for: **`#lazy-programmers`** **`#nocode`** **`#lowcode`** **`#ai-integrators`** **`#automation`** **`#api-gateway`** **`#data-pipelines`** **`#rapid-prototyping`** **`#llm-integration`** **`#makers`**
 
 If you don't have **advance APIs call skills** using a programming language or you just want  **a fast way to connect your AI model with an API** using MCP, you will LOVE 💖 this MCP.
 
 ### Features
 
 - Configure multiple API endpoints using YAML
-- Supports all HTTP methods (GET, POST, PATCH, PUT, DELETE)
 - Automatic MCP tool creation from YAML config file.
 - Automatic MCP fetch API creation from YAML config file.
+- Supports all HTTP methods (GET, POST, PATCH, PUT, DELETE) [✨PARTIAL✨]
+- Set API Headers [✨COMMING SOON✨]
+- Set API path parameters (like `/users/:id`) [✨COMMING SOON✨]
+- Set API Token [✨COMMING SOON✨]
 - Environment variable interpolation for sensitive data [✨COMMING SOON✨]
 - Automatic parameter generation from URL templates [✨COMMING SOON✨]
 - ...and best of all, SAVE COUNTLESS HOURS FOR HUMANITY 👏😎😉 by connecting your LLM to any API.
@@ -72,29 +75,32 @@ npx -y mcp-api-client --test-server
 
 Each API YAML file can include global metadata  with MCP information:
 
-`metadata`: (optional) General information about the API set
-  - `name`: The name of the API collection
-  - `version`: The version of the configuration
-  - `description`: A description of the API set
+```yaml
+metadata: (optional) General information about the API set
+  name: The name of the API collection
+  version: The version of the configuration
+  description: A description of the API set
+```
 
 and a list of API endpoint definitions:
 
-`apis`: A list of API endpoint definitions. Each endpoint should have:
-  - `name`: The unique name for this API endpoint
-    `description`: A short description of what this endpoint does
-    `url`: The endpoint URL (supports path parameters like `{id}`)
-    `method`: HTTP method (GET, POST, PATCH, PUT, DELETE)
-    `api-token`: API token (supports environment variables)
-    `content`: Request configuration
-      `headers`: Request headers (key-value pairs)
-      `query`: Query parameters (for GET or other methods, as a list of objects with name, type, default, required, description)
-      `body`: Request body schema (for POST, PUT, PATCH, as a list of objects with name, type, default, required, description)
+```yaml
+apis: A list of API endpoint definitions. Each endpoint should have
+  - name: The unique name for this API endpoint
+    description: A short description of what this endpoint does
+    url: The endpoint URL (It does not supports path parameters like `{id} yet`)
+    method: HTTP method (GET, POST, PATCH, PUT, DELETE)
+    api-token: API token (supports environment variables)
+    content: Request configuration
+      headers: Request headers (key-value pairs)
+      query: Query parameters (for GET or other methods, as a list of objects with name, type, default, required, description)
+      body: Request body schema (for POST, PUT, PATCH, as a list of objects with name, type, default, required, description)
+```
 
 See `test/apis.yaml` for a complete example with metadata and all HTTP methods and parameter types.
 
 
 ## Config Example
-
 
 ```yaml
 apis:
@@ -117,19 +123,28 @@ apis:
         email: string
 ```
 
-
+<!-- 
 ## API_TOKEN from .env
 
 Create a `.env` file for your API tokens:
 
 ```
 API_TOKEN=your_api_token_here
-```
+``` -->
 
 
 ## TODO
 
+* POST
+* PUT
+* PATCH
+* DELETE
+* headers
 * API_TOKEN
+
+## Bugs and Requests
+
+https://github.com/molavec/mcp-api-client/issues
 
 ## Contributing
 
