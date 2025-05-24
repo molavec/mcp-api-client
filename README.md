@@ -12,10 +12,11 @@ If you don't have **advance APIs call skills** using a programming language or y
 
 - Configure multiple API endpoints using YAML
 - Supports all HTTP methods (GET, POST, PATCH, PUT, DELETE)
-- Environment variable interpolation for sensitive data
-- Automatic parameter generation from URL templates
-- Factory pattern for tool creation
-- Full MCP server implementation
+- Automatic MCP tool creation from YAML config file.
+- Automatic MCP fetch API creation from YAML config file.
+- Environment variable interpolation for sensitive data [✨COMMING SOON✨]
+- Automatic parameter generation from URL templates [✨COMMING SOON✨]
+- ...and best of all, SAVE COUNTLESS HOURS FOR HUMANITY 👏😎😉 by connecting your LLM to any API.
 
 ### Use cases
 
@@ -40,13 +41,13 @@ npx -y mcp-api-client path-to-api-config-file.yaml
 1. Get a copy of default `api.yaml`.
 
 ```bash
-npx -y mcp-api --init
+npx -y mcp-api-client --init
 ```
 
 2. You can test **default api.yaml** with express test server `test/server.js`. Execute in other terminal.
 
 ```bash
-npx -y mcp-api --test-server
+npx -y mcp-api-client --test-server
 ```
 
 3. Add MCP to your agent config file. Example for Visual Studio Code settings file:
