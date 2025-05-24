@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
-import { readYamlAsJson } from './lib/yaml-reader';
-import { McpServer } from "./lib/mcp";
-import { createConfigFile } from './lib/create-config-file';
-import { startMockServer } from './test/mock-api';
+import { readYamlAsJson } from './lib/yaml-reader.js';
+import { McpServer } from "./lib/mcp.js";
+import { createConfigFile } from './lib/create-config-file.js';
+import { startMockServer } from './test/mock-api.js';
 
 
 const main = async () => {

@@ -4,10 +4,10 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { buildToolsFromApiConfigArray } from './tools-builder';
-import { ApiClient } from './api-client';
-import type { ApiConfig } from '../types/api';
-import type { McpMetadata } from '../types/mcp';
+import { buildToolsFromApiConfigArray } from './tools-builder.js';
+import { ApiClient } from './api-client.js';
+import type { ApiConfig } from '../types/api.js';
+import type { McpMetadata } from '../types/mcp.js';
 
 export class McpServer {
   private metadata: McpMetadata;

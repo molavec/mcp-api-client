@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { ApiProperty } from "../types/api";
+import type { ApiProperty } from "../types/api.js";
 
 // Helper function to replace environment variables
 function replaceEnvVars(str: string): string {

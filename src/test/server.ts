@@ -1,3 +1,3 @@
-import { startMockServer } from './mock-api';
+import { startMockServer } from './mock-api.js';
 
 startMockServer();

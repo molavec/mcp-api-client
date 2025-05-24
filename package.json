@@ -1,7 +1,7 @@
 {
   "name": "mcp-api-client",
-  "version": "0.6.5",
-  "description": "A Model Context Protocol (MCP) server that creates tools from API configurations defined in YAML files",
+  "version": "0.6.6",
+  "description": "A Model Context Protocol (MCP) server that call APIs using YAML config files. ",
   "type": "module",
   "engines": {
     "node": ">=20.0.0"
@@ -30,6 +30,7 @@
     "dev": "tsx --watch src/index.ts",
     "start": "node dist/index.js",
     "tsc": "tsc --version",
+    "build:clean": "rm -rf dist && rm -rf tsconfig.build.tsbuildinfo",
     "build": "tsc --project tsconfig.build.json",
     "inspector": "npx -y @modelcontextprotocol/inspector tsx src/index.ts",
     "test:server": "tsx src/test/server.ts",

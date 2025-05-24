@@ -1,5 +1,5 @@
-import { createBodySchema } from "./parser";
-import type { ApiProperty } from "../types/api";
+import { createBodySchema } from "./parser.js";
+import type { ApiProperty } from "../types/api.js";
 import { z } from "zod";
 
 const getPropertiesFromSchema = (schema: z.ZodTypeAny) => {

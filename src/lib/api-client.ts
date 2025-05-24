@@ -1,4 +1,4 @@
-import type { ApiConfig } from '../types/api';
+import type { ApiConfig } from '../types/api.js';
 
 export class ApiClient {
   constructor() {
