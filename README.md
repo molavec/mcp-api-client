@@ -31,54 +31,41 @@ If you don't have **advance APIs call skills** using a programming language or y
 ## How to use
 
 ```bash
-npx -y mcp-api path-to-api-config-file.yaml
+npx -y mcp-api-client path-to-api-config-file.yaml
 ```
-
 
 
 ## Getting started
 
-Get a copy of default `api.yaml`.
+1. Get a copy of default `api.yaml`.
 
 ```bash
 npx -y mcp-api --init
 ```
 
-Test default api.yaml with express `test/example-api.js
+2. You can test **default api.yaml** with express test server `test/server.js`. Execute in other terminal.
 
-
-`
-
-```yaml
-apis:
-  - name: getUser
-    url: https://api.example.com/users/{id}
-    method: GET
-    api-token: ${API_TOKEN}
-    content:
-      headers:
-        Accept: application/json
-  
-  - name: createUser
-    url: https://api.example.com/users
-    method: POST
-    api-token: ${API_TOKEN}
-    content:
-      headers:
-        Content-Type: application/json
-      body:
-        name: string
-        email: string
+```bash
+npx -y mcp-api --test-server
 ```
 
-Create a `.env` file for your API tokens:
+3. Add MCP to your agent config file. Example for Visual Studio Code settings file:
+
+```json
+"mcp": {
+    "servers": {
+      "mcp-api-client": {
+          "command": "npx",
+          "args": [
+              "-y",
+              "mcp-api-client",
+              "path-to-api.yaml"
+          ]
+      },
+    }
+  }
 
 ```
-API_TOKEN=your_api_token_here
-```
-
-
-The server will create MCP tools for each API endpoint defined in your `api.yaml` file.
 
 ## YAML Configuration
 
@@ -104,6 +91,45 @@ and a list of API endpoint definitions:
 
 See `test/apis.yaml` for a complete example with metadata and all HTTP methods and parameter types.
 
+
+## Config Example
+
+
+```yaml
+apis:
+  - name: getUser
+    url: https://api.example.com/users/{id}
+    method: GET
+    content:
+      headers:
+        Accept: application/json
+  
+  - name: createUser
+    url: https://api.example.com/users
+    method: POST
+    api-token: ${API_TOKEN}
+    content:
+      headers:
+        Content-Type: application/json
+      body:
+        name: string
+        email: string
+```
+
+
+## API_TOKEN from .env
+
+Create a `.env` file for your API tokens:
+
+```
+API_TOKEN=your_api_token_here
+```
+
+
+## TODO
+
+* API_TOKEN
+
 ## Contributing
 
 1. Fork the repository
@@ -113,5 +139,4 @@ See `test/apis.yaml` for a complete example with metadata and all HTTP methods a
 5. Create a new Pull Request
 
 ## License
-
 MIT

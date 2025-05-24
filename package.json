@@ -25,7 +25,7 @@
   "scripts": {
     "dev": "tsx --watch src/index.ts",
     "start": "node dist/index.js",
-    "api:server": "node test/example-api.js",
+    "test:server": "node test/server.js",
     "build": "tsc --project tsconfig.build.json",
     "inspector": "npx -y @modelcontextprotocol/inspector tsx src/index.ts",
     "test": "vitest"
