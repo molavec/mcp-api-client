@@ -8,6 +8,14 @@ import { startMockServer } from './test/mock-api.js';
 
 
 const main = async () => {
+
+  // If terminal has --version option print the version and exit
+  if (process.argv.includes('--version')) {
+    const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+    console.log(`mcp-yaml-api version: ${packageJson.version}`);
+    return;
+  }
+
   // If terminal has --init option create a new config file based on the template test/apis.yaml and name it as api.yaml or the path given as argument
   if (process.argv.includes('--init')) {
     console.log("Creating config file...");
