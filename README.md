@@ -38,11 +38,11 @@ Yes, a donation to help cover my coffee and rent would be amazing!
 - **Secure API Access**: Manage secrets and tokens via environment variables, keeping sensitive data out of source code and YAML files.
 
 
-## How to use
+<!-- ## How to use
 
 ```bash
 npx -y mcp-api-client path-to-api-config-file.yaml
-```
+``` -->
 
 
 ## Getting started
@@ -59,7 +59,9 @@ npx -y mcp-api-client --init
 npx -y mcp-api-client --test-server
 ```
 
-3. Add MCP to your agent config file. Example for Visual Studio Code settings file:
+3. Add MCP to your agent config file. 
+
+* Example for `Claude Client` settings file:
 
 ```json
 "mcp": {
@@ -77,12 +79,37 @@ npx -y mcp-api-client --test-server
 
 ```
 
-## YAML Configuration
+
+* Example for `Visual Studio Code` settings file:
+
+```json
+"mcp": {
+    "servers": {
+      "mcp-api-client": {
+          "command": "npx",
+          "args": [
+              "-y",
+              "mcp-api-client",
+              "path-to-api.yaml"
+          ]
+      },
+    }
+  }
+
+```
+
+4. Just Ask!
+
+![Ask to Claude LLM in MCP client](./public/claude_client_example.png)
+
+
+
+## YAML Configuration File
 
 Each API YAML file can include global metadata  with MCP information:
 
 ```yaml
-metadata: (optional) General information about the API set
+metadata: General information about the API set
   name: The name of the API collection
   version: The version of the configuration
   description: A description of the API set
@@ -127,6 +154,7 @@ apis:
       body:
         name: string
         email: string
+  ...
 ```
 
 <!-- 
