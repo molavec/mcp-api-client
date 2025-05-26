@@ -103,7 +103,7 @@ apis: A list of API endpoint definitions. Each endpoint should have
       body: Request body schema (for POST, PUT, PATCH, as a list of objects with name, type, default, required, description)
 ```
 
-See `test/apis.yaml` for a complete example with metadata and all HTTP methods and parameter types.
+See `public/apis.yaml` for a complete example with metadata and all HTTP methods and parameter types.
 
 
 ## Config Example

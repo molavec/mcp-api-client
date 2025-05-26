@@ -6,24 +6,33 @@ import { McpServer } from "./lib/mcp.js";
 import { createConfigFile } from './lib/create-config-file.js';
 import { startMockServer } from './test/mock-api.js';
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Get the current file's directory
+// to resolve relative paths correctly
+// This is necessary because __dirname is not available in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const main = async () => {
 
   // If terminal has --version option print the version and exit
   if (process.argv.includes('--version')) {
-    const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+    const packageJson = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8'));
     console.log(`mcp-yaml-api version: ${packageJson.version}`);
     return;
   }
 
-  // If terminal has --init option create a new config file based on the template test/apis.yaml and name it as api.yaml or the path given as argument
+  // If terminal has --init option create a new config file based on the template public/apis.yaml and name it as api.yaml or the path given as argument
   if (process.argv.includes('--init')) {
     console.log("Creating config file...");
     const initIndex = process.argv.indexOf('--init');
-    const configFile = process.argv[initIndex + 1] || 'apis.yaml';
+    const outputConfigFile = process.argv[initIndex + 1] || 'apis.yaml';
     try {
-      createConfigFile(configFile);
-      console.log(`Config file created: ${configFile}`);
+      createConfigFile(outputConfigFile);
+      console.log(`Config file created: ${outputConfigFile}`);
     } catch (error) {
       console.error('Error creating config file:', error);
     }
@@ -38,7 +47,7 @@ const main = async () => {
   }
 
   // Reads the YAML file with the API configuration and builds the tools list
-  const apiConfigFile = process.argv[2] || './src/test/apis.yaml';
+  const apiConfigFile = process.argv[2] || __dirname + '/../public/apis.yaml';
   const config = readYamlAsJson(apiConfigFile);
 
   const mcpServer = new McpServer(config.metadata, config.apis);
