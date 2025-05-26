@@ -8,6 +8,13 @@ Ideal for: **`#lazy-programmers`** **`#nocode`** **`#lowcode`** **`#ai-integrato
 
 If you don't have **advance APIs call skills** using a programming language or you just want  **a fast way to connect your AI model with an API** using MCP, you will LOVE 💖 this MCP.
 
+## Support
+
+
+
+Yes, a donation to help cover my coffee and rent would be amazing!
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G1FR7OO)
+
 ### Features
 
 - Configure multiple API endpoints using YAML

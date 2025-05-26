@@ -2,17 +2,17 @@ import { z } from "zod";
 import type { ApiProperty } from "../types/api.js";
 
 // Helper function to replace environment variables
-function replaceEnvVars(str: string): string {
+const replaceEnvVars = (str: string): string => {
     return str.replace(/\${([^}]+)}/g, (_, varName) => process.env[varName] || "");
 }
 
 // Helper function to replace parameters in the URL
-function replaceUrlParams(url: string, params: Record<string, string>): string {
+const replaceUrlParams = (url: string, params: Record<string, string>): string => {
     return url.replace(/{([^}]+)}/g, (_, param) => params[param] || "");
 }
 
 // Function to create a Zod schema based on the body definition
-function createBodySchema(bodyDef: ApiProperty[] | undefined) {
+const createBodySchema = (bodyDef: ApiProperty[] | undefined) => {
     if (!bodyDef || !Array.isArray(bodyDef)) return z.object({}).optional();
     const schema: Record<string, any> = {};
     for (const prop of bodyDef) {
