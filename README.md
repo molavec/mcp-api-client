@@ -10,7 +10,16 @@ If you don't have **advance APIs call skills** using a programming language or y
 
 ## Support
 
-Yes, a donation to help cover my coffee and rent would be amazing!
+### YOU CAN HELP ME GET IT SOON!
+
+Your help would really motivate me to get it done by **May 30th, 2025!** 
+
+Make a reaction and give me a motivational comment on [mcp.so repository](https://mcp.so/server/mcp-api-client/molavec?tab=comments)
+
+![Help me on mcp.so](./public/hack_help.png)
+
+
+... and yes. A donation to help cover my coffee and rent would be amazing! 🙏🙏
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G1FR7OO)
 
