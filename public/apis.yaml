@@ -2,6 +2,7 @@ metadata:
   name: API Examples
   version: 1.0.0
   description: This file contains examples of various API endpoints for testing purposes.
+
 apis:
   # add example GET API without parameters
   - name: getUsers
@@ -12,12 +13,11 @@ apis:
       headers:
         Accept: application/json
   
-  # add example GET API with parameters
-  - name: getUsersWithParams
+  # add example GET API with query parameters
+  - name: getUsersWithQueryParameters
     description: Retrieve a list of users with pagination.
     url: http://localhost:3000/users
     method: GET
-    api-token: ${API_TOKEN}
     content:
       headers:
         Accept: application/json
@@ -34,30 +34,13 @@ apis:
           description: The number of users to retrieve per page.
 
   # add example GET API with path parameters
-  - name: getUser
+  - name: getUserWithPathParameters
     description: Retrieve a user by ID.
     url: http://localhost:3000/users/{id}
     method: GET
-    api-token: ${API_TOKEN}
     content:
       headers:
         Accept: application/json
-
-  # add example GET API with path parameters and query parameters
-  - name: getUserWithParams
-    description: Retrieve a user by ID with optional query parameters.
-    url: http://localhost:3000/users/{id}
-    method: GET
-    api-token: ${API_TOKEN}
-    content:
-      headers:
-        Accept: application/json
-      query:
-        - name: includePosts
-          default: true
-          type: boolean
-          required: false
-          description: Whether to include the user's posts in the response.
 
   # add example POST API        
   - name: createUser
