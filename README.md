@@ -127,32 +127,22 @@ Each API YAML file can include global metadata  with MCP information:
 
 ```yaml
 metadata: General information about the API set
-  name: The name of the API collection
-  version: The version of the configuration
-  description: A description of the API set
 ```
 
 and a list of API endpoint definitions:
 
 ```yaml
 apis: A list of API endpoint definitions. Each endpoint should have
-  - name: The unique name for this API endpoint
-    description: A short description of what this endpoint does
-    url: The endpoint URL (It does not supports path parameters like `{id} yet`)
-    method: HTTP method (GET, POST, PATCH, PUT, DELETE)
-    api-token: API token (supports environment variables)
-    options: Request configuration
-      headers: Request headers (key-value pairs)
-      query: Query parameters (for GET or other methods, as a list of objects with name, type, default, required, description)
-      body: Request body schema (for POST, PUT, PATCH, as a list of objects with name, type, default, required, description)
 ```
 
-See `public/apis.yaml` for a complete example with metadata and all HTTP methods and parameter types.
-
-
-## Config Example
+### Example API YAML config file example
 
 ```yaml
+metadata:
+  name: API Examples
+  version: 1.0.0
+  description: This file contains examples of various API endpoints for testing purposes.
+
 apis:
   - name: getUser
     url: https://api.example.com/users/{id}
@@ -174,6 +164,10 @@ apis:
   ...
 ```
 
+See [public/apis.yaml](https://github.com/molavec/mcp-api-client/blob/main/public/apis.yaml) for a complete example with metadata and all HTTP methods and parameter types.
+
+
+
 <!-- 
 ## API_TOKEN from .env
 
@@ -182,16 +176,6 @@ Create a `.env` file for your API tokens:
 ```
 API_TOKEN=your_api_token_here
 ``` -->
-
-
-## TODO
-
-* POST
-* PUT
-* PATCH
-* DELETE
-* headers
-* API_TOKEN
 
 ## Bugs and Requests
 
