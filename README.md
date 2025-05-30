@@ -8,7 +8,11 @@ Ideal for: **`#lazy-programmers`** **`#nocode`** **`#lowcode`** **`#ai-integrato
 
 If you don't have **advance APIs call skills** using a programming language or you just want  **a fast way to connect your AI model with an API** using MCP, you will LOVE 💖 this MCP.
 
-## Support
+
+## 🎬▶️ Example Video😉✨
+[Check this video using included Test Server and Claude](https://www.berrycast.com/conversations/df10bb4d-a8f3-5331-aaf9-c923644959ae)
+
+## Support ME PLZ with your Click!
 
 ### YOU CAN HELP ME GET IT SOON!
 
