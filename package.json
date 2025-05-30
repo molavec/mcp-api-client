@@ -1,6 +1,6 @@
 {
   "name": "mcp-api-client",
-  "version": "0.9.13",
+  "version": "0.9.14",
   "description": "A Model Context Protocol (MCP) server that call APIs using YAML config files. ",
   "type": "module",
   "engines": {

@@ -70,11 +70,12 @@ npx -y mcp-api-client path-to-api-config-file.yaml
 npx -y mcp-api-client --init
 ```
 
-2. You can test **default api.yaml** with express test server `test/server.js`. Execute in other terminal.
+2. You can test **default api.yaml** with express test server [test/server.js](https://github.com/molavec/mcp-api-client/blob/main/src/test/mock-api.ts). Execute in other terminal.
 
 ```bash
 npx -y mcp-api-client --test-server
 ```
+
 
 3. Add MCP to your agent config file. 
 
