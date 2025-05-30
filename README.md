@@ -12,18 +12,13 @@ If you don't have **advance APIs call skills** using a programming language or y
 ## 🎬▶️ Example Video😉✨
 [Check this video using included Test Server and Claude](https://www.berrycast.com/conversations/df10bb4d-a8f3-5331-aaf9-c923644959ae)
 
-## Support ME PLZ with your Click!
-
-### YOU CAN HELP ME GET IT SOON!
-
-Your help would really motivate me to get it done by **May 30th, 2025!** 
+## Support with your Click!
 
 Make a reaction and give me a motivational comment on [mcp.so repository](https://mcp.so/server/mcp-api-client/molavec?tab=comments)
 
 ![Help me on mcp.so](./public/hack_help.png)
 
-
-... and yes. A donation to help cover my coffee and rent would be amazing! 🙏🙏
+... and yes! A donation to help cover my coffee and rent would be amazing! 🙏🙏
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G1FR7OO)
 
@@ -46,6 +41,7 @@ Make a reaction and give me a motivational comment on [mcp.so repository](https:
 - Environment variable interpolation for sensitive data [✨ 🫣🔴COMMING SOON✨]
 - Automatic PATH parameter detection from URL (like `/users/{id}`)[✨WORKING✨]
 - Automatic QUERY parameter detection from URL (like `/users?page={page}&limit={limit}`) [✨WORKING✨]
+- **Reduce Prompt tokens used** setting up certain APIs for your project
 - ...and best of all, SAVE COUNTLESS HOURS FOR HUMANITY 👏😎😉 by connecting your LLM to any API.
 
 ### Use cases
@@ -172,15 +168,13 @@ apis:
 See [public/apis.yaml](https://github.com/molavec/mcp-api-client/blob/main/public/apis.yaml) for a complete example with metadata and all HTTP methods and parameter types.
 
 
-
-<!-- 
-## API_TOKEN from .env
+## API_TOKEN from .env (Not tested yet!)
 
 Create a `.env` file for your API tokens:
 
 ```
 API_TOKEN=your_api_token_here
-``` -->
+``` 
 
 ## Bugs and Requests
 
