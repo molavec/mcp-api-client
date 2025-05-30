@@ -1,5 +1,5 @@
 
-export interface ApiProperty {
+export interface ApiBodyProperty {
   name: string;
   default?: string | number | boolean | null;
   type: string;
@@ -13,10 +13,10 @@ export interface ApiConfig {
   description: string;
   url: string;
   method: string;
-  content?: {
-    body?: ApiProperty[];
-    query?: ApiProperty[];
-    headers?: ApiProperty[];
-    path?: ApiProperty[];
+  options?: {
+    body?: ApiBodyProperty[];
+    query?: ApiBodyProperty[];
+    headers?: ApiBodyProperty[];
+    path?: ApiBodyProperty[];
   };
 }

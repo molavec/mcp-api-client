@@ -58,7 +58,7 @@ describe('MCP YAML API', () => {
       expect(api).toHaveProperty('url');
       expect(api).toHaveProperty('method');
       expect(api).toHaveProperty('api-token');
-      expect(api).toHaveProperty('content');
+      expect(api).toHaveProperty('options');
     }
   });
 

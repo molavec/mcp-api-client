@@ -11,7 +11,25 @@ interface User {
 
 const users: User[] = [
   { id: '1', name: 'John Doe', email: 'john@example.com' },
-  { id: '2', name: 'Jane Smith', email: 'jane@example.com' }
+  { id: '2', name: 'Jane Smith', email: 'jane@example.com' },
+  { id: '3', name: 'Alice Johnson', email: 'alice.johnson@example.com' },
+  { id: '4', name: 'Bob Brown', email: 'bob.brown@example.com' },
+  { id: '5', name: 'Charlie Green', email: 'charlie.green@example.com' },
+  { id: '6', name: 'Diana Prince', email: 'diana.prince@example.com' },
+  { id: '7', name: 'Eve Black', email: 'eve.black@example.com' },
+  { id: '8', name: 'Frank White', email: 'frank.white@example.com' },
+  { id: '9', name: 'Grace Lee', email: 'grace.lee@example.com' },
+  { id: '10', name: 'Henry Ford', email: 'henry.ford@example.com' },
+  { id: '11', name: 'Ivy Walker', email: 'ivy.walker@example.com' },
+  { id: '12', name: 'Jack King', email: 'jack.king@example.com' },
+  { id: '13', name: 'Karen Scott', email: 'karen.scott@example.com' },
+  { id: '14', name: 'Leo Turner', email: 'leo.turner@example.com' },
+  { id: '15', name: 'Mona Lisa', email: 'mona.lisa@example.com' },
+  { id: '16', name: 'Nina Simone', email: 'nina.simone@example.com' },
+  { id: '17', name: 'Oscar Wilde', email: 'oscar.wilde@example.com' },
+  { id: '18', name: 'Paul Allen', email: 'paul.allen@example.com' },
+  { id: '19', name: 'Quinn Fox', email: 'quinn.fox@example.com' },
+  { id: '20', name: 'Rita Hayworth', email: 'rita.hayworth@example.com' }
 ];
 
 const HOME_HTML = `

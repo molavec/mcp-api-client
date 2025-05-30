@@ -1,29 +1,31 @@
-import { createBodySchema } from "./parser.js";
-import type { ApiProperty } from "../types/api.js";
-import { z } from "zod";
+import { getUrlParametersAndQuerys, getBodyProperties } from "./parser.js";
+import type { ApiBodyProperty } from "../types/api.js";
 
-const getPropertiesFromSchema = (schema: z.ZodTypeAny) => {
-  if (schema instanceof z.ZodObject) {
-    return schema.shape;
-  }
-  if (schema instanceof z.ZodOptional && schema._def.innerType instanceof z.ZodObject) {
-    return schema._def.innerType.shape;
-  }
-  return {};
-};
 
 export const buildToolsFromApiConfigArray = (apiConfigArray: any[]): any[] =>
   apiConfigArray.map((apiConfig: any) => {
+    // Get parameters and query from a url like http://localhost:3000/users/{id}?page={page}&limit={limit}
+    const parametersAndQuerys = getUrlParametersAndQuerys(apiConfig.url);
     const method = apiConfig.method?.toUpperCase();
-    const bodyDef: ApiProperty[] | undefined = apiConfig.content?.body;
-    const schema = createBodySchema(bodyDef);
+    const body: ApiBodyProperty[] | undefined = apiConfig.options?.body;
+    const schema = getBodyProperties(body);
+
+    const properties  = { ...parametersAndQuerys, ...schema }
+    if(apiConfig.name === 'getUsers' ) {
+      // console.error('parametersAndQuerys', parametersAndQuerys)
+      // console.error('schema', getPropertiesFromSchema(schema))
+      console.error('parametersAndQuerys', parametersAndQuerys)
+      console.error('body', body)
+      console.error('properties', properties)
+    }
+
     return {
       name: apiConfig.name,
       description: apiConfig.description,
       inputSchema: {
         type: "object",
-        properties: getPropertiesFromSchema(schema),
-        required: (bodyDef || []).filter((p: ApiProperty) => p.required).map((p: ApiProperty) => p.name),
+        properties: properties,
+        required: (body || []).filter((p: ApiBodyProperty) => p.required).map((p: ApiBodyProperty) => p.name),
       },
       annotations: {
         title: apiConfig.description,

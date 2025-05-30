@@ -29,11 +29,19 @@ Make a reaction and give me a motivational comment on [mcp.so repository](https:
 - Automatic MCP tool creation from YAML config file.
 - Automatic MCP fetch API creation from YAML config file.
 - Supports all HTTP methods (GET, POST, PATCH, PUT, DELETE) [✨PARTIAL✨]
-- Set API Headers [✨COMMING SOON✨]
-- Set API path parameters (like `/users/:id`) [✨COMMING SOON✨]
-- Set API Token [✨COMMING SOON✨]
-- Environment variable interpolation for sensitive data [✨COMMING SOON✨]
-- Automatic parameter generation from URL templates [✨COMMING SOON✨]
+  - [✅] GET API without parameters
+  - [✅] GET API with query parameters
+  - [✅] GET API with path parameters
+  - [✅] POST API
+  - [✅] PATCH API with path parameters
+  - [✅] PUT API with
+  - [✅] DELETE API with path parameters
+  -
+- Set API Headers [✨WORKING✨]
+- Set API Token [✨ 🫣🔴COMMING SOON✨]
+- Environment variable interpolation for sensitive data [✨ 🫣🔴COMMING SOON✨]
+- Automatic PATH parameter detection from URL (like `/users/{id}`)[✨WORKING✨]
+- Automatic QUERY parameter detection from URL (like `/users?page={page}&limit={limit}`) [✨WORKING✨]
 - ...and best of all, SAVE COUNTLESS HOURS FOR HUMANITY 👏😎😉 by connecting your LLM to any API.
 
 ### Use cases
@@ -133,7 +141,7 @@ apis: A list of API endpoint definitions. Each endpoint should have
     url: The endpoint URL (It does not supports path parameters like `{id} yet`)
     method: HTTP method (GET, POST, PATCH, PUT, DELETE)
     api-token: API token (supports environment variables)
-    content: Request configuration
+    options: Request configuration
       headers: Request headers (key-value pairs)
       query: Query parameters (for GET or other methods, as a list of objects with name, type, default, required, description)
       body: Request body schema (for POST, PUT, PATCH, as a list of objects with name, type, default, required, description)
